@@ -1,0 +1,9 @@
+streamlit>=1.40,<2
+librosa>=0.10.2,<0.12
+numpy<2
+soundfile
+torch==2.2.2
+torchaudio==2.2.2
+demucs==4.0.1
+basic-pitch==0.4.0
+imageio-ffmpeg==0.6.0

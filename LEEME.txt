@@ -1,0 +1,6 @@
+Guitar Studio AI — Studio, prototipo para Mac Intel / Sequoia
+1. Abre Instalar.command (clic derecho > Abrir si macOS lo solicita).
+2. Si aparece el instalador oficial de Python, complétalo. Si el script se detiene, vuelve a abrir Instalar.command.
+3. Abre Iniciar.command. La interfaz se abre en el navegador local.
+No requiere Homebrew. Python 3.11 es la única instalación de sistema prevista; las bibliotecas y FFmpeg se instalan en esta carpeta. Internet necesario inicialmente, incluidos modelos Demucs.
+Las ondas representan el audio real; los reproductores de pistas son independientes, no sincronizados. El mezclador genera un fragmento combinado con los niveles elegidos. Los acordes y tablaturas son estimaciones. No se ha probado en macOS. Reserva varios GB de disco. Si falla la instalación, conserva el mensaje de Terminal.
