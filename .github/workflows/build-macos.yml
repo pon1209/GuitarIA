@@ -18,18 +18,17 @@ jobs:
           python-version: '3.11'
           architecture: x64
 
-      - name: Preparar aplicación
+      - name: Preparar dependencias
         run: |
-          APP="Guitar Studio AI.app"
-          mkdir -p "$APP/Contents/MacOS"
-          mkdir -p "$APP/Contents/Resources"
           python -m pip install --upgrade pip
-          python -m pip install -r requirements.txt
+          python -m pip install --only-binary=:all: numpy==1.26.4 numba==0.61.2 llvmlite==0.44.0
+          printf "numpy==1.26.4\nnumba==0.61.2\nllvmlite==0.44.0\n" > constraints.txt
+          python -m pip install -r requirements.txt -c constraints.txt
           python -m pip install pyinstaller
           python -m pip check
 
-      - name: Comprobar dependencias
+      - name: Comprobar compatibilidad
         run: |
-          python -c "import torch, torchaudio, librosa, streamlit, basic_pitch, demucs"
+          python -c "import torch, torchaudio, librosa, streamlit, basic_pitch, demucs, numba, llvmlite"
           python -m py_compile app.py
           uname -m
