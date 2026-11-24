@@ -1,0 +1,35 @@
+name: Guitar Studio AI - Mac Intel
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15-intel
+    timeout-minutes: 90
+
+    steps:
+      - name: Descargar proyecto
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          architecture: x64
+
+      - name: Preparar aplicación
+        run: |
+          APP="Guitar Studio AI.app"
+          mkdir -p "$APP/Contents/MacOS"
+          mkdir -p "$APP/Contents/Resources"
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install pyinstaller
+          python -m pip check
+
+      - name: Comprobar dependencias
+        run: |
+          python -c "import torch, torchaudio, librosa, streamlit, basic_pitch, demucs"
+          python -m py_compile app.py
+          uname -m
