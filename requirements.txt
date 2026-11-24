@@ -1,9 +1,13 @@
 streamlit>=1.40,<2
-librosa>=0.10.2,<0.12
-numpy<2
+librosa==0.11.0
+numpy==1.26.4
 soundfile
 torch==2.2.2
 torchaudio==2.2.2
 demucs==4.0.1
 basic-pitch==0.4.0
 imageio-ffmpeg==0.6.0
+numba==0.61.2
+llvmlite==0.44.0
+pandas==2.2.3
+scipy==1.15.3
